@@ -18,8 +18,9 @@ Pod::Spec.new do |spec|
   spec.homepage     = "http://www.rbailoni.com.br/"
   spec.license      = "MIT"
   spec.author             = { "Ricardo Bailoni" => "rbailoni@rbailoni.com.br" }
-  spec.source       = { :git => 'https://github.com/rbailoni/MyFramework.git', :tag => "1.0.0" }
+  spec.source       = { :git => 'https://github.com/rbailoni/MyFramework.git', :tag => "1.0.1" }
   spec.source_files  = "MyFramework"
   spec.exclude_files = "Classes/Exclude"
   spec.swift_version = "5.0"
+  spec.dependency 'Alamofire'
 end

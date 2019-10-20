@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 public protocol APIRequest {
     associatedtype RequestDataType
@@ -22,6 +23,14 @@ public class APIRequestLoader<T: APIRequest> {
     public init(apiRequest: T, urlSession: URLSession = .shared) {
         self.apiRequest = apiRequest
         self.urlSession = urlSession
+    }
+    
+    public func getAlamofireResponse(_ url: String, completion: @escaping (String) -> Void) {
+        Alamofire.request(url).responseString { (response) in
+            if let json = response.result.value {
+                completion(json)
+            }
+        }
     }
     
     public func loadAPIRequest(requestData: T.RequestDataType, completionHandler: @escaping(T.ResponseDataType?, Error?) -> Void) {
